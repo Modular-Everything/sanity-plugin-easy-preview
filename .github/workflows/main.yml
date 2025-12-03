@@ -48,7 +48,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          cache: npm
           node-version: lts/*
       - run: npm clean-install
         # Linting can be skipped
@@ -88,7 +87,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          cache: npm
           node-version: ${{ matrix.node }}
       - run: npm install
       - run: npm test --if-present
@@ -112,7 +110,6 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          cache: npm
           node-version: lts/*
       - run: npm clean-install
       - run: npm audit signatures
