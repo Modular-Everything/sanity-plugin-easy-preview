@@ -1,0 +1,87 @@
+{
+  "name": "sanity-plugin-easy-preview",
+  "version": "1.0.0",
+  "description": "Easily preview draft changes in a new tab, without all the fussy set up.",
+  "keywords": [
+    "sanity",
+    "sanity-plugin",
+    "preview",
+    "draft",
+    "draft-mode"
+  ],
+  "homepage": "https://github.com/Modular-Everything/sanity-plugin-easy-preview#readme",
+  "bugs": {
+    "url": "https://github.com/Modular-Everything/sanity-plugin-easy-preview/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Modular-Everything/sanity-plugin-easy-preview.git"
+  },
+  "license": "MIT",
+  "author": "Christian (Chrish) Dunne <yo@modular-everything.com>",
+  "sideEffects": false,
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "sanity.json",
+    "src",
+    "v2-incompatible.js"
+  ],
+  "scripts": {
+    "build": "plugin-kit verify-package --silent && pkg-utils build --strict --check --clean",
+    "format": "prettier --write --cache --ignore-unknown .",
+    "link-watch": "plugin-kit link-watch",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build",
+    "watch": "pkg-utils watch --strict",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@sanity/icons": "^3.5.0",
+    "@sanity/incompatible-plugin": "^1.0.5",
+    "@sanity/preview-url-secret": "^2.0.1",
+    "@sanity/uuid": "^3.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@sanity/pkg-utils": "^10.0.0",
+    "@sanity/plugin-kit": "^4.0.20",
+    "@sanity/semantic-release-preset": "^5.0.0",
+    "@types/react": "^19.2.7",
+    "@typescript-eslint/eslint-plugin": "^8.48.1",
+    "@typescript-eslint/parser": "^8.48.1",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-config-sanity": "^7.1.4",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "prettier-plugin-packagejson": "^2.5.20",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sanity": "^4.20.0",
+    "styled-components": "^6.1.19",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "react": "^18",
+    "sanity": "^3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
