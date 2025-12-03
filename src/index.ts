@@ -12,7 +12,7 @@ import {definePlugin, useClient} from 'sanity'
  */
 export interface PreviewTypeConfig {
   /** The schema type name (e.g., 'page', 'blogPost') */
-  name: string
+  type: string
   /** URL prefix for this document type - can be a string or function that receives the document */
   urlPrefix?: string | ((doc: SanityDocument) => string)
   /** Path to the slug field in the document (default: 'slug.current') */
@@ -107,8 +107,8 @@ async function cleanupExpiredSecrets(client: SanityClient): Promise<void> {
  *     easyPreview({
  *       previewUrl: 'http://localhost:3000',
  *       types: [
- *         { name: 'page', urlPrefix: '' },
- *         { name: 'blogPost', urlPrefix: '/blog' }
+ *         { type: 'page', urlPrefix: '' },
+ *         { type: 'blogPost', urlPrefix: '/blog' }
  *       ]
  *     })
  *   ],
@@ -133,7 +133,7 @@ export const easyPreview = definePlugin<EasyPreviewConfig>((config) => {
   // Create a map of type names to their configs for quick lookup
   const typeConfigMap = new Map<string, PreviewTypeConfig>()
   types.forEach((typeConfig) => {
-    typeConfigMap.set(typeConfig.name, typeConfig)
+    typeConfigMap.set(typeConfig.type, typeConfig)
   })
 
   const PreviewAction: DocumentActionComponent = (props) => {

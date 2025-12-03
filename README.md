@@ -49,15 +49,15 @@ export default defineConfig({
       // Document types with preview enabled
       types: [
         {
-          name: 'page',
+          type: 'page',
           urlPrefix: '', // Homepage and pages at root level
         },
         {
-          name: 'blogPost',
+          type: 'blogPost',
           urlPrefix: '/blog', // Blog posts prefixed with /blog
         },
         {
-          name: 'product',
+          type: 'product',
           urlPrefix: (doc) => `/products/${doc.category}`, // Dynamic prefix based on document
           slugField: 'productSlug.current', // Override global slugField for this type
         },
