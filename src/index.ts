@@ -209,12 +209,24 @@ export const easyPreview = definePlugin<EasyPreviewConfig>((config) => {
               : typeConfig.urlPrefix
         }
 
+        // Normalise parts to avoid double slashes and handle root paths
+        const normalise = (s: string) => s.replace(/\/+$/g, '').replace(/^\/+/, '')
+        const prefixNorm = urlPrefix ? normalise(urlPrefix) : ''
+        const slugNorm = slug === '/' ? '/' : normalise(slug)
+
         // Construct preview URL
         const url = new URL(draftRoute, previewUrl)
         url.searchParams.set('sanity-preview-secret', secret)
 
         // Build the pathname: /prefix/slug
-        const pathname = urlPrefix ? `${urlPrefix}/${slug}` : `/${slug}`
+        let pathname = '/'
+        if (slugNorm === '/') {
+          pathname = prefixNorm ? `/${prefixNorm}` : '/'
+        } else if (prefixNorm) {
+          pathname = `/${prefixNorm}/${slugNorm}`
+        } else {
+          pathname = `/${slugNorm}`
+        }
         url.searchParams.set('sanity-preview-pathname', pathname)
 
         // Open preview in new tab
