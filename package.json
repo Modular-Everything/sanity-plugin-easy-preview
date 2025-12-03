@@ -73,6 +73,7 @@
     "prettier-plugin-packagejson": "^2.5.20",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-is": "^19.2.0",
     "sanity": "^4.20.0",
     "styled-components": "^6.1.19",
     "typescript": "^5.9.3"
