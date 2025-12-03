@@ -79,7 +79,7 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "react": "^18",
+    "react": "^19",
     "sanity": "^3"
   },
   "engines": {
