@@ -43,12 +43,14 @@ export default defineConfig({
       // API route path for draft validation (default: '/api/draft')
       draftRoute: '/api/draft',
 
+      // Global default slug field (default: 'slug.current')
+      slugField: 'slug.current',
+
       // Document types with preview enabled
       types: [
         {
           name: 'page',
           urlPrefix: '', // Homepage and pages at root level
-          slugField: 'slug.current', // Default, can be omitted
         },
         {
           name: 'blogPost',
@@ -57,7 +59,7 @@ export default defineConfig({
         {
           name: 'product',
           urlPrefix: (doc) => `/products/${doc.category}`, // Dynamic prefix based on document
-          slugField: 'productSlug.current',
+          slugField: 'productSlug.current', // Override global slugField for this type
         },
       ],
     }),
@@ -79,6 +81,14 @@ export default defineConfig({
 - **Default:** `'/api/draft'`
 - The API route path that handles preview validation
 
+#### `slugField` (optional)
+
+- **Type:** `string`
+- **Default:** `'slug.current'`
+- Global default path to the slug field in documents
+- Supports dot notation: `'slug.current'`, `'meta.slug'`, `'pathname.current'`, etc.
+- Can be overridden per document type in the `types` configuration
+
 #### `types` (required)
 
 - **Type:** `PreviewTypeConfig[]`
@@ -90,8 +100,10 @@ Each type config has:
 - `urlPrefix` (optional): URL prefix for this document type
   - Can be a string: `'/blog'`
   - Or a function: `(doc) => '/products/' + doc.category`
-- `slugField` (optional): Path to the slug field (default: `'slug.current'`)
+- `slugField` (optional): Path to the slug field for this specific type
+  - Overrides the global `slugField` setting
   - Supports dot notation: `'slug.current'`, `'meta.slug'`, etc.
+  - If not set, uses the global `slugField` (default: `'slug.current'`)
 
 ### Environment Variables
 
@@ -377,7 +389,6 @@ with default configuration for build & watch scripts.
 
 See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
 on how to run this plugin with hotreload in the studio.
-
 
 ### Release new version
 

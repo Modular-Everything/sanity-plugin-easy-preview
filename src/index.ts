@@ -28,6 +28,8 @@ export interface EasyPreviewConfig {
   previewUrl?: string
   /** API route path for draft validation (default: '/api/draft') */
   draftRoute?: string
+  /** Global default path to the slug field (default: 'slug.current'). Can be overridden per-type. */
+  slugField?: string
   /** Document types that should have preview enabled */
   types: PreviewTypeConfig[]
 }
@@ -162,7 +164,7 @@ export const easyPreview = definePlugin<EasyPreviewConfig>((config) => {
         }
 
         // Extract slug from document
-        const slugField = typeConfig.slugField || 'slug.current'
+        const slugField = typeConfig.slugField || config.slugField || 'slug.current'
         const slug = getSlugValue(document, slugField)
 
         if (!slug) {
