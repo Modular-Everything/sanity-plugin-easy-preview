@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-easy-preview",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Easily preview draft changes in a new tab, without all the fussy set up.",
   "keywords": [
     "sanity",
