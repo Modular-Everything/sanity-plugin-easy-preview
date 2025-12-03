@@ -20,7 +20,7 @@
   "license": "MIT",
   "author": "Christian (Chrish) Dunne <yo@modular-everything.com>",
   "sideEffects": false,
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     ".": {
       "source": "./src/index.ts",
