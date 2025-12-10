@@ -5,6 +5,11 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.2.1 (2025-12-10)</small>
+
+- fix: accept v3 or v4 versions of Sanity ([0748c8f](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/0748c8f))
+- chore: accept v3 or v4 versions of Sanity ([2b34a78](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/2b34a78))
+
 ## 1.2.0 (2025-12-03)
 
 - fix: normalise pathnames to avoid '/' errors ([5c93ad6](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/5c93ad6))
