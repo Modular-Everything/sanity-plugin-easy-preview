@@ -1,3 +1,7 @@
+## <small>1.3.3 (2026-01-06)</small>
+
+* fix: update peer dependencies for React and Sanity UI ([89e59ce](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/89e59ce))
+
 ## <small>1.3.2 (2026-01-06)</small>
 
 * fix: make previewUrl a required configuration option ([909cfff](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/909cfff))
