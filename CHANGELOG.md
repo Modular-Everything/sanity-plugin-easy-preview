@@ -1,3 +1,7 @@
+## <small>1.3.1 (2026-01-06)</small>
+
+* chore: trigger release ([4fd9422](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/4fd9422))
+
 <!-- markdownlint-disable --><!-- textlint-disable -->
 
 # 📓 Changelog
