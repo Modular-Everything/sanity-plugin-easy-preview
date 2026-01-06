@@ -37,7 +37,9 @@ export default defineConfig({
   // ...
   plugins: [
     easyPreview({
-      // Base URL of your preview site (defaults to SANITY_STUDIO_PREVIEW_URL env var)
+      // Base URL of your preview site (required)
+      // Vite/Astro: use import.meta.env.SANITY_STUDIO_PREVIEW_URL
+      // previewUrl: import.meta.env.SANITY_STUDIO_PREVIEW_URL,
       previewUrl: 'http://localhost:3000',
 
       // API route path for draft validation (default: '/api/draft')
@@ -69,11 +71,13 @@ export default defineConfig({
 
 ### Configuration Options
 
-#### `previewUrl` (optional)
+#### `previewUrl` (required)
 
 - **Type:** `string`
-- **Default:** `process.env.SANITY_STUDIO_PREVIEW_URL`
-- The base URL of your frontend site
+- **Default:** none (must be provided)
+- The base URL (origin) of your frontend site
+- In Studio configs built with Vite (Sanity v5, Astro, etc.), access env via `import.meta.env.SANITY_STUDIO_PREVIEW_URL`
+- Avoid `process.env` in `sanity.config.ts` for browser-bundled Studio configs
 
 #### `draftRoute` (optional)
 
@@ -113,6 +117,7 @@ You can set the preview URL via environment variable in `.env.local`:
 SANITY_STUDIO_PREVIEW_URL=http://localhost:3000
 ```
 
+Then reference it in `sanity.config.ts` using `import.meta.env.SANITY_STUDIO_PREVIEW_URL`.
 This is useful for different environments (development, staging, production).
 
 ## Frontend Setup

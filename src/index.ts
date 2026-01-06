@@ -24,8 +24,8 @@ export interface PreviewTypeConfig {
  * @public
  */
 export interface EasyPreviewConfig {
-  /** Base URL of your preview site (defaults to SANITY_STUDIO_PREVIEW_URL env var) */
-  previewUrl?: string
+  /** Base URL of your preview site (required). Example: 'http://localhost:3000' */
+  previewUrl: string
   /** API route path for draft validation (default: '/api/draft') */
   draftRoute?: string
   /** Global default path to the slug field (default: 'slug.current'). Can be overridden per-type. */
@@ -118,16 +118,19 @@ async function cleanupExpiredSecrets(client: SanityClient): Promise<void> {
  * @public
  */
 export const easyPreview = definePlugin<EasyPreviewConfig>((config) => {
-  const {
-    previewUrl = typeof process === 'undefined' ? undefined : process.env.SANITY_STUDIO_PREVIEW_URL,
-    draftRoute = '/api/draft',
-    types = [],
-  } = config
+  const {previewUrl, draftRoute = '/api/draft', types = []} = config
 
   if (!previewUrl) {
-    console.warn(
-      'sanity-plugin-easy-preview: No previewUrl configured. Set SANITY_STUDIO_PREVIEW_URL or pass previewUrl in config.',
+    console.error(
+      'sanity-plugin-easy-preview: previewUrl is required. Pass a full origin, e.g. "http://localhost:3000".',
     )
+    // Return a no-op plugin so Studio continues to load without actions
+    return {
+      name: 'sanity-plugin-easy-preview',
+      document: {
+        actions: (prev) => prev,
+      },
+    }
   }
 
   // Create a map of type names to their configs for quick lookup
