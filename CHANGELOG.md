@@ -1,3 +1,20 @@
+## 2.0.0 (2026-10-12)
+
+* Add renovate.json ([4878be0](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/4878be0))
+* feat!: support Sanity Studio v6 ([1854ae9](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/1854ae9))
+* Merge pull request #1 from Modular-Everything/renovate/configure ([056cc39](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/056cc39)), closes [#1](https://github.com/Modular-Everything/sanity-plugin-easy-preview/issues/1)
+* Merge pull request #13 from Modular-Everything/feat/sanity-v6 ([99e6ad2](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/99e6ad2)), closes [#13](https://github.com/Modular-Everything/sanity-plugin-easy-preview/issues/13)
+* chore: add agent skills configuration ([d50ac2c](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/d50ac2c))
+
+
+### BREAKING CHANGE
+
+* Requires Sanity Studio v6, React 19.2+ and Node.js
+22.12+. Sanity v4 and v5 are no longer supported; stay on
+sanity-plugin-easy-preview@^1 for those versions.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
 ## <small>1.3.3 (2026-01-06)</small>
 
 * fix: update peer dependencies for React and Sanity UI ([89e59ce](https://github.com/Modular-Everything/sanity-plugin-easy-preview/commit/89e59ce))
