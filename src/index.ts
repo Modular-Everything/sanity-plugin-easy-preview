@@ -1,9 +1,8 @@
-import type {SanityClient} from '@sanity/client'
-import {EyeOpenIcon} from '@sanity/icons'
-import {useToast} from '@sanity/ui'
+import {EyeOpenIcon} from '@sanity/icons/EyeOpen'
+import {useToast} from '@sanity/ui/toast'
 import {uuid} from '@sanity/uuid'
 import {useCallback} from 'react'
-import type {DocumentActionComponent, SanityDocument} from 'sanity'
+import type {DocumentActionComponent, SanityClient, SanityDocument} from 'sanity'
 import {definePlugin, useClient} from 'sanity'
 
 /**
