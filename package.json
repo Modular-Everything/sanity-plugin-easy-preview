@@ -33,9 +33,7 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
-    "sanity.json",
-    "src",
-    "v2-incompatible.js"
+    "src"
   ],
   "scripts": {
     "build": "plugin-kit verify-package --silent && pkg-utils build --strict --check --clean",
@@ -47,18 +45,17 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@sanity/icons": "^3.7.4",
-    "@sanity/incompatible-plugin": "^1.0.5",
-    "@sanity/preview-url-secret": "^4.0.2",
-    "@sanity/uuid": "^3.0.2"
+    "@sanity/icons": "^5.0.0",
+    "@sanity/uuid": "^3.0.2",
+    "@sanity/ui": "^4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.3.0",
     "@commitlint/config-conventional": "^20.3.0",
-    "@sanity/pkg-utils": "^10.2.5",
+    "@sanity/pkg-utils": "^10.9.2",
     "@sanity/plugin-kit": "^4.0.20",
     "@sanity/semantic-release-preset": "^6.0.0",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.3.0",
     "@typescript-eslint/eslint-plugin": "^8.52.0",
     "@typescript-eslint/parser": "^8.52.0",
     "eslint": "^8.57.1",
@@ -71,17 +68,22 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "prettier-plugin-packagejson": "^2.5.20",
-    "sanity": "^5.1.0",
-    "styled-components": "^6.2.0",
+    "sanity": "^6.18.0",
+    "styled-components": "^6.5.3",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "sanity": "^4.0.0 || ^5.0.0-0",
-    "@sanity/ui": ">=1 <4",
-    "react": ">=18 <20",
-    "react-dom": ">=18 <20"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sanity": "^6.0.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12"
+  },
+  "sanityPlugin": {
+    "verifyPackage": {
+      "sanityV2Json": false,
+      "nodeEngine": false
+    }
   }
 }

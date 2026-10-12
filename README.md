@@ -13,6 +13,15 @@ Easily preview draft changes in a new tab, without all the fussy setup. This plu
 - 🎨 **Native Sanity UI** with toast notifications for errors
 - 🧹 **Automatic cleanup** of expired preview secrets
 
+## Compatibility
+
+| Plugin version | Sanity Studio | React | Node.js |
+| -------------- | ------------- | ----- | ------- |
+| 2.x            | v6            | 19.2+ | 22.12+  |
+| 1.x            | v4, v5        | 18+   | 18+     |
+
+If your Studio is still on Sanity v4 or v5, install `sanity-plugin-easy-preview@^1`.
+
 ## Installation
 
 ```sh
@@ -100,7 +109,7 @@ export default defineConfig({
 
 Each type config has:
 
-- `name` (required): The schema type name (e.g., `'page'`, `'blogPost'`)
+- `type` (required): The schema type name (e.g., `'page'`, `'blogPost'`)
 - `urlPrefix` (optional): URL prefix for this document type
   - Can be a string: `'/blog'`
   - Or a function: `(doc) => '/products/' + doc.category`
@@ -155,7 +164,7 @@ export async function GET(request: Request) {
     return new Response('Invalid secret', {status: 401})
   }
 
-  draftMode().enable()
+  ;(await draftMode()).enable()
   redirect(redirectTo)
 }
 ```
@@ -167,7 +176,7 @@ import {draftMode} from 'next/headers'
 import {NextRequest, NextResponse} from 'next/server'
 
 export async function GET(request: NextRequest) {
-  draftMode().disable()
+  ;(await draftMode()).disable()
   const url = new URL(request.nextUrl)
   return NextResponse.redirect(new URL('/', url.origin))
 }
@@ -257,7 +266,7 @@ import {draftMode} from 'next/headers'
 import {client} from '@/sanity/lib/client'
 
 export async function getPage(slug: string) {
-  const isDraft = draftMode().isEnabled
+  const isDraft = (await draftMode()).isEnabled
 
   return client.fetch(
     `*[_type == "page" && slug.current == $slug][0]`,
@@ -358,7 +367,7 @@ export function getClient() {
 ### Preview button doesn't appear
 
 - Check that the document type is in your `types` configuration
-- Verify the type `name` matches exactly
+- Verify the `type` matches the schema type name exactly
 
 ### "Missing slug" error
 
